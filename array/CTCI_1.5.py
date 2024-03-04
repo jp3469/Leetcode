@@ -36,19 +36,24 @@ def concatenate(s):
     index = 0
     while index < len(arr):
         numchar = 1
-        while arr[index + 1] != None and arr[index + 1] == arr[index]:
+        curr = arr[index]
+        while index+numchar < len(arr) and arr[index + numchar] == curr:
             numchar += 1
-        newarr.append(arr[index])
-        newarr.append(numchar)
+        newarr.append(curr)
+        newarr.append(str(numchar))
         index += numchar
     if len(newarr)>len(arr):
         return ''.join(arr)
     return ''.join(newarr)
 
-s1 = 'aabcccdccaaa'
+s1 = 'aabcccccaaa'
 s2 = 'aabcda'
 s3 = ''
 
 print(concatenate(s1))
 print(concatenate(s2))
 print(concatenate(s3))
+
+'''Runtime is O(n) since we are looping through the original string once.
+Space complexity is O(n) since we are creating a new string that is returned. 
+'''
